@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: translateToText.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: translateToText.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * En este apartado se obtiene el texto en braille que se desea traducir.
+ */
+document.getElementById('translateToTextButton').addEventListener('click',function(){
+    sendResultText(document.getElementById('brailleTextInput').value);
+});
+
+/**
+ * Esta variable está siendo usada para el mapeo de braille a español con los requerimientos solicitados.
+ */
+const reverseBrailleMap = {
+    '⠁': 'a', '⠃': 'b', '⠉': 'c', '⠙': 'd', '⠑': 'e',
+    '⠋': 'f', '⠛': 'g', '⠓': 'h', '⠊': 'i', '⠚': 'j',
+    '⠅': 'k', '⠇': 'l', '⠍': 'm', '⠝': 'n', '⠕': 'o',
+    '⠏': 'p', '⠟': 'q', '⠗': 'r', '⠎': 's', '⠞': 't',
+    '⠥': 'u', '⠧': 'v', '⠺': 'w', '⠭': 'x', '⠽': 'y',
+    '⠵': 'z', '⠼⠁': '1', '⠼⠃': '2', '⠼⠉': '3',
+    '⠼⠙': '4', '⠼⠑': '5', '⠼⠋': '6', '⠼⠛': '7',
+    '⠼⠓': '8', '⠼⠊': '9', '⠼⠚': '0',
+    '⠷': 'á', '⠮': 'é', '⠌': 'í', '⠬': 'ó', '⠾': 'ú', '⠻': 'ñ', '⠳': 'ü',
+    '⠄': '.', '⠂': ',', '⠆': ';', '⠒': ':', '⠤': '_',
+    '⠢': '¿', '⠖': '¡', '⠦': '"', '⠣': '(', '⠜': ')',
+    '⠐⠖': '+', '⠐⠦': '*', '⠐⠶': '=', '⠐⠌': '÷', '⠐⠤': '-',
+    '⠨⠁': 'A', '⠨⠃': 'B', '⠨⠉': 'C', '⠨⠙': 'D', '⠨⠑': 'E',
+    '⠨⠋': 'F', '⠨⠛': 'G', '⠨⠓': 'H', '⠨⠊': 'I', '⠨⠚': 'J',
+    '⠨⠅': 'K', '⠨⠇': 'L', '⠨⠍': 'M', '⠨⠝': 'N', '⠨⠕': 'O',
+    '⠨⠏': 'P', '⠨⠟': 'Q', '⠨⠗': 'R', '⠨⠎': 'S', '⠨⠞': 'T',
+    '⠨⠥': 'U', '⠨⠧': 'V', '⠨⠺': 'W', '⠨⠭': 'X', '⠨⠽': 'Y',
+    '⠨⠵': 'Z', ' ': ' '
+};
+
+/**
+ * Esta función traduce un texto en braille de entrada recibido como parámetro a texto en español.
+ * @param {String} inputText la cadena del texto en braille 
+ */
+function translateToText(inputText) {
+    const brailleText = inputText;
+    let outputText = '';
+    let interrogationCount = 0;
+    let exclamationCount = 0;
+    /**
+     * El siguiente bucle se utiliza para gestionar la traducción de los simbolos, letras mayusculas y minusculas 
+     * de braille a español.
+     */
+    for (let i = 0; i &lt; brailleText.length; i++) {
+        const char = brailleText[i];
+        switch (char) {
+            //Para cuando sea número
+            case '⠼':
+                i++;
+                outputText += reverseBrailleMap['⠼' + brailleText[i]];
+                break;
+            //Para los simbolos conflictivos ¿?
+            case '⠢':
+                interrogationCount++;
+                outputText += (interrogationCount % 2 == 1) ? '¿' : '?';
+                break;
+            //Para los simbolos conflictivos ¡!
+            case '⠖':
+                exclamationCount++;
+                outputText += (exclamationCount % 2 === 1) ? '¡' : '!';
+                break;
+            //Para las mayúsculas
+            case '⠨':
+                i++;
+                outputText += reverseBrailleMap['⠨' + brailleText[i]].toUpperCase();
+                break;
+            //Para simbolos aritméticos
+            case '⠐':
+                i++;
+                outputText += reverseBrailleMap['⠐' + brailleText[i]];
+                break;
+            //Para simbolos inexistentes
+            default:
+                if (reverseBrailleMap[char]) {
+                    outputText += reverseBrailleMap[char];
+                } else {
+                    outputText += '❓';
+                }
+                break;
+        }
+    }
+
+    return outputText;
+}
+
+/**
+ * Esta función obtiene el evento que está al inicio de este script. Posteriormente, lo envía al metodo para traducir
+ * de braille a español.
+ * @param {String} textInBraille texto recibido del evento
+ */
+function sendResultText(textInBraille) {
+    document.getElementById('textOutput').innerText = translateToText(textInBraille);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-translateToBraille.html">translateToBraille</a></li></ul><h3>Global</h3><ul><li><a href="global.html#autoResize">autoResize</a></li><li><a href="global.html#brailleMap">brailleMap</a></li><li><a href="global.html#clearBraille">clearBraille</a></li><li><a href="global.html#clearText">clearText</a></li><li><a href="global.html#reverseBrailleMap">reverseBrailleMap</a></li><li><a href="global.html#sendResultBraille">sendResultBraille</a></li><li><a href="global.html#sendResultText">sendResultText</a></li><li><a href="global.html#translateToBraille">translateToBraille</a></li><li><a href="global.html#translateToText">translateToText</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Wed Jun 05 2024 23:22:46 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
