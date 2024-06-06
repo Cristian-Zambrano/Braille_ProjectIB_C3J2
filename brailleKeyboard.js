@@ -1,3 +1,5 @@
+import { brailleMap } from './translateToBraille.js';
+
 const brailleKeyboard = document.getElementById('brailleKeyboard');
 
 // Crear las teclas del teclado virtual

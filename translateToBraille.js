@@ -1,7 +1,12 @@
-document.getElementById('translateToBrailleButton').addEventListener('click', sendResultBraille(document.getElementById('textInput').value));
+import { autoResize } from './';
+
+document.getElementById('translateToBrailleButton').addEventListener('click', function() {
+    sendResultBraille(document.getElementById('textInput').value);
+});
 document.getElementById('textInput').addEventListener('input', autoResize);
 
-const brailleMap = {
+
+export const brailleMap = {
     'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑',
     'f': '⠋', 'g': '⠛', 'h': '⠓', 'i': '⠊', 'j': '⠚',
     'k': '⠅', 'l': '⠇', 'm': '⠍', 'n': '⠝', 'o': '⠕',
@@ -37,4 +42,4 @@ function sendResultBraille(text){
     document.getElementById('brailleOutput').innerText = translateToBraille(text);
 }
 
-module.exports = translateToBraille;
+
