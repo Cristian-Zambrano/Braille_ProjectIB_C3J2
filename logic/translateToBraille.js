@@ -21,7 +21,7 @@ export const brailleMap = {
     'K': '⠨⠅', 'L': '⠨⠇', 'M': '⠨⠍', 'N': '⠨⠝', 'O': '⠨⠕',
     'P': '⠨⠏', 'Q': '⠨⠟', 'R': '⠨⠗', 'S': '⠨⠎', 'T': '⠨⠞',
     'U': '⠨⠥', 'V': '⠨⠧', 'W': '⠨⠺', 'X': '⠨⠭', 'Y': '⠨⠽',
-    'Z': '⠨⠵',  '\u00A0': '\u00A0'
+    'Z': '⠨⠵',  ' ': '\u00A0'
 };
 /**
  * Traduce una cadena de texto al alfabeto Braille.
