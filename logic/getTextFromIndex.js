@@ -5,14 +5,14 @@ import { sendResultText } from './showResults.js';
  * Añade un manejador de eventos al botón 'translateToBrailleButton'.
  * Cuando se hace clic en el botón, se ejecuta la función 'sendResultBraille' con el valor del elemento con id 'textInput' como argumento.
  */
-document.getElementById('translateToBrailleButton').addEventListener('click', function() {
+document.getElementById('textInput').addEventListener('input', function() {
     sendResultBraille(document.getElementById('textInput').value);
 });
 
 /**
  * En este apartado se obtiene el texto en braille que se desea traducir.
  */
-document.getElementById('translateToTextButton').addEventListener('click',function(){
+document.getElementById('brailleKeyboard').addEventListener('click',function(){
     sendResultText(document.getElementById('brailleTextInput').value);
 });
 

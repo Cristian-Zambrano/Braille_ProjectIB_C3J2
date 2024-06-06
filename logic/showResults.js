@@ -23,6 +23,5 @@ export function sendResultText(textInBraille) {
  * Ajusta automáticamente el tamaño del elemento de entrada de texto a medida que se introduce texto.
  */
 export function autoResize() {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px';
+    
 }

@@ -20,17 +20,16 @@
         <!--Seccion de español a braille-->
         <h2>Español a Braille</h2>
         <textarea id="textInput" placeholder="Introduce el texto en español aquí..."></textarea> <!--Introducción del texto en español-->
-        <button id="translateToBrailleButton">Traducir a Braille</button> <!--Botón para traducir a Braille -->
-        <div id="brailleOutput" class="output"></div> <!--Salida en Braille-->
-        <button id="clearBrailleButton">Limpiar Braille</button> <!--Botón para limpiar el texto-->
+        <textarea id="brailleOutput" class="output" disabled="true"></textarea> <!--Salida en Braille-->
+        <button id="clearBrailleButton">Limpiar contenido</button> <!--Botón para limpiar el texto-->
         <button id="saveTXTButton" >Imprimir en PDF</button> <!--Botón para imprimir en PDF-->
     </div>
     <div class="section">
         <h2>Braille a Texto</h2> <!--Sección de braille a español-->
         <div class="braille-keyboard" id="brailleKeyboard"></div> <!--Teclado en pantalla Braille-->
         <textarea id="brailleTextInput" placeholder="Introduce el texto en Braille aquí..."></textarea> <!--Introduccion del texto en Braille -->
-        <button id="translateToTextButton">Traducir a Texto</button> <!-- Botón para traducir el texto a español -->
-        <div id="textOutput" class="output"></div> <!--Salida en texto -->
+        
+        <textarea id="textOutput" class="output" disabled="true"></textarea> <!--Salida en texto -->
         <button id="clearTextButton">Limpiar Texto</button> <!--Botón para limpiar-->
     </div>
 </div>
