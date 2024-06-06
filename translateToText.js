@@ -47,25 +47,34 @@ function translateToText(text) {
     let exclamationCount = 0;
     for (let i = 0; i < brailleText.length; i++) {
         const char = brailleText[i];
-        if (char === '⠼') {
-            i++;
-            outputText += reverseBrailleMap['⠼' + brailleText[i]];
-        } else if (char === '⠢') {
-            interrogationCount++;
-            outputText += (interrogationCount % 2 == 1) ? '¿' : '?';
-        } else if (char === '⠖') {
-            exclamationCount++;
-            outputText += (exclamationCount % 2 === 1) ? '¡' : '!';
-        } else if (char === '⠨') {
-            i++;
-            outputText += reverseBrailleMap['⠨' + brailleText[i]].toUpperCase();
-        } else if (char === '⠐') {
-            i++;
-            outputText += reverseBrailleMap['⠐' + brailleText[i]];
-        } else if (reverseBrailleMap[char]) {
-            outputText += reverseBrailleMap[char];
-        } else {
-            outputText += '❓';
+        switch (char) {
+            case '⠼':
+                i++;
+                outputText += reverseBrailleMap['⠼' + brailleText[i]];
+                break;
+            case '⠢':
+                interrogationCount++;
+                outputText += (interrogationCount % 2 == 1) ? '¿' : '?';
+                break;
+            case '⠖':
+                exclamationCount++;
+                outputText += (exclamationCount % 2 === 1) ? '¡' : '!';
+                break;
+            case '⠨':
+                i++;
+                outputText += reverseBrailleMap['⠨' + brailleText[i]].toUpperCase();
+                break;
+            case '⠐':
+                i++;
+                outputText += reverseBrailleMap['⠐' + brailleText[i]];
+                break;
+            default:
+                if (reverseBrailleMap[char]) {
+                    outputText += reverseBrailleMap[char];
+                } else {
+                    outputText += '❓';
+                }
+                break;
         }
     }
 
