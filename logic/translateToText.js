@@ -1,14 +1,7 @@
 /**
- * En este apartado se obtiene el texto en braille que se desea traducir.
- */
-document.getElementById('translateToTextButton').addEventListener('click',function(){
-    sendResultText(document.getElementById('brailleTextInput').value);
-});
-
-/**
  * Esta variable está siendo usada para el mapeo de braille a español con los requerimientos solicitados.
  */
-const reverseBrailleMap = {
+export const reverseBrailleMap = {
     '⠁': 'a', '⠃': 'b', '⠉': 'c', '⠙': 'd', '⠑': 'e',
     '⠋': 'f', '⠛': 'g', '⠓': 'h', '⠊': 'i', '⠚': 'j',
     '⠅': 'k', '⠇': 'l', '⠍': 'm', '⠝': 'n', '⠕': 'o',
@@ -26,14 +19,14 @@ const reverseBrailleMap = {
     '⠨⠅': 'K', '⠨⠇': 'L', '⠨⠍': 'M', '⠨⠝': 'N', '⠨⠕': 'O',
     '⠨⠏': 'P', '⠨⠟': 'Q', '⠨⠗': 'R', '⠨⠎': 'S', '⠨⠞': 'T',
     '⠨⠥': 'U', '⠨⠧': 'V', '⠨⠺': 'W', '⠨⠭': 'X', '⠨⠽': 'Y',
-    '⠨⠵': 'Z', ' ': ' '
+    '⠨⠵': 'Z', 'Espacio': '&nbsp;'
 };
 
 /**
  * Esta función traduce un texto en braille de entrada recibido como parámetro a texto en español.
  * @param {String} inputText la cadena del texto en braille 
  */
-function translateToText(inputText) {
+export function translateToText(inputText) {
     const brailleText = inputText;
     let outputText = '';
     let interrogationCount = 0;
@@ -84,11 +77,4 @@ function translateToText(inputText) {
     return outputText;
 }
 
-/**
- * Esta función obtiene el evento que está al inicio de este script. Posteriormente, lo envía al metodo para traducir
- * de braille a español.
- * @param {String} textInBraille texto recibido del evento
- */
-function sendResultText(textInBraille) {
-    document.getElementById('textOutput').innerText = translateToText(textInBraille);
-}
+

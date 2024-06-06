@@ -18,7 +18,7 @@ const brailleKeyboard = document.getElementById('brailleKeyboard');
 for (let [char, braille] of Object.entries(brailleMap)) {
     const key = document.createElement('div');
     key.className = 'braille-key';
-    key.innerHTML = `<span>${char === ' ' ? 'Espacio en blanco' : char}</span><div class="braille-symbol">${braille}</div>`;
+    key.innerHTML = `<span>${char ==' ' ? 'Espacio':char}</span><div class="braille-symbol">${braille}</div>`;
     key.dataset.char = char;
     brailleKeyboard.appendChild(key);
     key.addEventListener('click', addBrailleCharacter);
