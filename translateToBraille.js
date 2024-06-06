@@ -1,5 +1,3 @@
-import { autoResize } from './';
-
 document.getElementById('translateToBrailleButton').addEventListener('click', function() {
     sendResultBraille(document.getElementById('textInput').value);
 });
@@ -41,5 +39,8 @@ function translateToBraille(inputText) {
 function sendResultBraille(text){
     document.getElementById('brailleOutput').innerText = translateToBraille(text);
 }
-
+function autoResize() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+}
 
