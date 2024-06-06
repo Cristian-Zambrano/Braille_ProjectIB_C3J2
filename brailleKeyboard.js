@@ -10,7 +10,6 @@ for (let [char, braille] of Object.entries(brailleMap)) {
     key.addEventListener('click', addBrailleCharacter);
 }
 
-
 function addBrailleCharacter(event) {
     const brailleChar = event.currentTarget.querySelector('.braille-symbol').innerText;
     const brailleTextInput = document.getElementById('brailleTextInput');
