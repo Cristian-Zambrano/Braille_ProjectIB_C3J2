@@ -19,13 +19,6 @@
         <button id="clearBrailleButton">Limpiar Braille</button>
         <button id="saveTXTButton" >Imprimir en PDF</button>
     </div>
-    <script>
-        document.getElementById('saveTXTButton').addEventListener('click', function() {
-            const textoTraducido = document.getElementById('brailleOutput').textContent;
-            localStorage.setItem('textoTraducido', textoTraducido); // Almacenar en localStorage
-            window.location.href = './imprimir.html'; // Cambiar a la página de destino
-        });
-    </script>
     <div class="section">
         <h2>Braille a Texto</h2>
         <div class="braille-keyboard" id="brailleKeyboard"></div>
@@ -39,5 +32,6 @@
 <script src="limpiezaTexto.js"></script>
 <script type="module" src="translateToBraille.js"></script>
 <script src="translateToText.js"></script>
+<script src="printMirroredBraille.js"></script>
 </body>
 </html>

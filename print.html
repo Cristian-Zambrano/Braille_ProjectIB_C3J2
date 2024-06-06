@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Impresion</title>
+</head>
+<body>
+    <div id="texto" style="transform: rotateY(3.142rad); font-size: 45px;"></div>
+    <script>
+        // Recuperar el texto traducido desde localStorage
+        const translatedText = localStorage.getItem('translatedText');
+        if (translatedText) {
+            // Mostrar el texto traducido en el div
+            document.getElementById('texto').innerText = translatedText;
+        }
+        window.print();
+    </script>
+</body>
+</html>
