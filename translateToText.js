@@ -1,23 +1,5 @@
-const brailleMap = {
-    'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑',
-    'f': '⠋', 'g': '⠛', 'h': '⠓', 'i': '⠊', 'j': '⠚',
-    'k': '⠅', 'l': '⠇', 'm': '⠍', 'n': '⠝', 'o': '⠕',
-    'p': '⠏', 'q': '⠟', 'r': '⠗', 's': '⠎', 't': '⠞',
-    'u': '⠥', 'v': '⠧', 'w': '⠺', 'x': '⠭', 'y': '⠽',
-    'z': '⠵', '1': '⠼⠁', '2': '⠼⠃', '3': '⠼⠉',
-    '4': '⠼⠙', '5': '⠼⠑', '6': '⠼⠋', '7': '⠼⠛',
-    '8': '⠼⠓', '9': '⠼⠊', '0': '⠼⠚',
-    'á': '⠷', 'é': '⠮', 'í': '⠌', 'ó': '⠬', 'ú': '⠾', 'ñ': '⠻', 'ü': '⠳',
-    '.': '⠄', ',': '⠂', ';': '⠆', ':': '⠒', '_': '⠤',
-    '¿': '⠢', '?': '⠢', '¡': '⠖', '!': '⠖', '"': '⠦',
-    '(': '⠣', ')': '⠜', '+': '⠐⠖', '*': '⠐⠦', '=': '⠐⠶', '÷': '⠐⠌', '-': '⠐⠤',
-    'A': '⠨⠁', 'B': '⠨⠃', 'C': '⠨⠉', 'D': '⠨⠙', 'E': '⠨⠑',
-    'F': '⠨⠋', 'G': '⠨⠛', 'H': '⠨⠓', 'I': '⠨⠊', 'J': '⠨⠚',
-    'K': '⠨⠅', 'L': '⠨⠇', 'M': '⠨⠍', 'N': '⠨⠝', 'O': '⠨⠕',
-    'P': '⠨⠏', 'Q': '⠨⠟', 'R': '⠨⠗', 'S': '⠨⠎', 'T': '⠨⠞',
-    'U': '⠨⠥', 'V': '⠨⠧', 'W': '⠨⠺', 'X': '⠨⠭', 'Y': '⠨⠽',
-    'Z': '⠨⠵', ' ': ' '
-};
+document.getElementById('translateToTextButton').addEventListener('click', sendResultText(document.getElementById('brailleTextInput').value));
+
 
 const reverseBrailleMap = {
     '⠁': 'a', '⠃': 'b', '⠉': 'c', '⠙': 'd', '⠑': 'e',
@@ -40,8 +22,8 @@ const reverseBrailleMap = {
     '⠨⠵': 'Z', ' ': ' '
 };
 
-function translateToText(text) {
-    const brailleText = text;
+function translateToText(inputText) {
+    const brailleText = inputText;
     let outputText = '';
     let interrogationCount = 0;
     let exclamationCount = 0;
@@ -79,6 +61,10 @@ function translateToText(text) {
     }
 
     return outputText;
+}
+
+function sendResultText(textInBraille){
+    document.getElementById('brailleOutput').innerText = translateToText(textInBraille);
 }
 
 module.exports = translateToText;
