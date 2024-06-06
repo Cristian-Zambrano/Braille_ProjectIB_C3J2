@@ -1,7 +1,9 @@
 /**
  * En este apartado se obtiene el texto en braille que se desea traducir.
  */
-document.getElementById('translateToTextButton').addEventListener('click', sendResultText(document.getElementById('brailleTextInput').value));
+document.getElementById('translateToTextButton').addEventListener('click',function(){
+    sendResultText(document.getElementById('brailleTextInput').value);
+});
 
 /**
  * Esta variable está siendo usada para el mapeo de braille a español con los requerimientos solicitados.
@@ -88,5 +90,5 @@ function translateToText(inputText) {
  * @param {String} textInBraille texto recibido del evento
  */
 function sendResultText(textInBraille) {
-    document.getElementById('brailleOutput').innerText = translateToText(textInBraille);
+    document.getElementById('textOutput').innerText = translateToText(textInBraille);
 }
