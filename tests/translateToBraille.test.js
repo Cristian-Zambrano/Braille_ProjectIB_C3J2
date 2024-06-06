@@ -1,15 +1,15 @@
-const translateToBraile = require('./translateToBraille');
+const translateToBraile = require('../logic/translateToBraille');
 
 test('Traducir abecedario texto -> braile', () => {
-    expect(translateToBraile("abcdefghijklmnñopqrstuvwxyz")).toBe("⠁ ⠃ ⠉ ⠙ ⠑ ⠋ ⠛ ⠓ ⠊ ⠚ ⠅ ⠇ ⠍ ⠝ ⠻ ⠕ ⠏ ⠟ ⠗ ⠎ ⠞ ⠥ ⠧ ⠺ ⠭ ⠽ ⠵ ");
+    expect(translateToBraile("abcdefghijklmnñopqrstuvwxyz")).toBe("⠁ ⠃ ⠉ ⠙ ⠑ ⠋ ⠛ ⠓ ⠊ ⠚ ⠅ ⠇ ⠍ ⠝ ⠻ ⠕ ⠏ ⠟ ⠗ ⠎ ⠞ ⠥ ⠧ ⠺ ⠭ ⠽ ⠵");
 });
 
 test('Traducir numeros texto -> braile', () => {
-    expect(translateToBraile("1234567890")).toBe("⠼⠁ ⠼⠃ ⠼⠉ ⠼⠙ ⠼⠑ ⠼⠋ ⠼⠛ ⠼⠓ ⠼⠊ ⠼⠚ ");
+    expect(translateToBraile("1234567890")).toBe("⠼⠁ ⠼⠃ ⠼⠉ ⠼⠙ ⠼⠑ ⠼⠋ ⠼⠛ ⠼⠓ ⠼⠊ ⠼⠚");
 });
 
 test('Traducir simbolos texto -> braile', () => {
-    expect(translateToBraile('.,;:_"!¡¿?()+*=÷-')).toBe("⠄ ⠂ ⠆ ⠒ ⠤ ⠦ ⠖ ⠖ ⠢ ⠢ ⠣ ⠜ ⠖ ⠦ ⠶ ⠲ ⠤ ");
+    expect(translateToBraile('.,;:_"!¡¿?()+*=÷-')).toBe("⠄ ⠂ ⠆ ⠒ ⠤ ⠦ ⠖ ⠖ ⠢ ⠢ ⠣ ⠜ ⠐⠖ ⠐⠦ ⠐⠶ ⠐⠌ ⠐⠤");
 });
 
 

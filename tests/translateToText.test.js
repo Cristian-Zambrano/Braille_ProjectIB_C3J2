@@ -1,4 +1,4 @@
-const translateToText = require('./translateToText');
+const translateToText = require('../logic/translateToText');
 
 test('Traducir abecedario braile -> texto', () => {
     expect(translateToText("⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠻⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵")).toBe("abcdefghijklmnñopqrstuvwxyz");
@@ -9,8 +9,7 @@ test('Traducir numeros braile -> texto', () => {
 });
 
 test('Traducir simbolos braile -> texto', () => {
-    //Este error no se puede resolver, porque la profesora nos dió un alfabeto con caracteres que se repiten
-    expect(translateToText('⠄⠂⠆⠒⠤⠦⠖⠖⠢⠢⠣⠜⠖⠦⠶⠲⠤')).toBe(".,;:_\"!¡¿?()+*=÷-");
+    expect(translateToText('⠄ ⠂ ⠆ ⠒ ⠤ ⠦ ⠖ ⠖ ⠢ ⠢ ⠣ ⠜ ⠐⠖ ⠐⠦ ⠐⠶ ⠐⠌ ⠐⠤')).toBe(". , ; : _ \" ¡ ! ¿ ? ( ) + * = ÷ -");
 });
 
 
