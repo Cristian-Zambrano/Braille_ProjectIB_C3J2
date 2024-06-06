@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Título de la pagina del traductor-->
     <title>Traductor Braille</title>
+    <!--Enlace al archivo de estilos-->
     <link rel="stylesheet" href="styles.css">
+    <!--Enlace para la fuente de Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap" rel="stylesheet">
+    <!--Llamada a la biblioteca jsPDF para generar PDFs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+<!--Encabezado principal-->
 <h1>Traductor Español-Braille</h1>
 <div class="container">
     <div class="section">
+        <!--Seccion de español a braille-->
         <h2>Español a Braille</h2>
-        <textarea id="textInput" placeholder="Introduce el texto en español aquí..."></textarea>
-        <button id="translateToBrailleButton">Traducir a Braille</button>
-        <div id="brailleOutput" class="output"></div>
-        <button id="clearBrailleButton">Limpiar Braille</button>
-        <button id="saveTXTButton" >Imprimir en PDF</button>
+        <textarea id="textInput" placeholder="Introduce el texto en español aquí..."></textarea> <!--Introducción del texto en español-->
+        <button id="translateToBrailleButton">Traducir a Braille</button> <!--Botón para traducir a Braille -->
+        <div id="brailleOutput" class="output"></div> <!--Salida en Braille-->
+        <button id="clearBrailleButton">Limpiar Braille</button> <!--Botón para limpiar el texto-->
+        <button id="saveTXTButton" >Imprimir en PDF</button> <!--Botón para imprimir en PDF-->
     </div>
     <div class="section">
-        <h2>Braille a Texto</h2>
-        <div class="braille-keyboard" id="brailleKeyboard"></div>
-        <textarea id="brailleTextInput" placeholder="Introduce el texto en Braille aquí..."></textarea>
-        <button id="translateToTextButton">Traducir a Texto</button>
-        <div id="textOutput" class="output"></div>
-        <button id="clearTextButton">Limpiar Texto</button>
+        <h2>Braille a Texto</h2> <!--Sección de braille a español-->
+        <div class="braille-keyboard" id="brailleKeyboard"></div> <!--Teclado en pantalla Braille-->
+        <textarea id="brailleTextInput" placeholder="Introduce el texto en Braille aquí..."></textarea> <!--Introduccion del texto en Braille -->
+        <button id="translateToTextButton">Traducir a Texto</button> <!-- Botón para traducir el texto a español -->
+        <div id="textOutput" class="output"></div> <!--Salida en texto -->
+        <button id="clearTextButton">Limpiar Texto</button> <!--Botón para limpiar-->
     </div>
 </div>
+<!--Llamada de los scripts-->
 <script type="module" src="brailleKeyboard.js"></script>
 <script src="limpiezaTexto.js"></script>
 <script type="module" src="translateToBraille.js"></script>
