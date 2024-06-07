@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: brailleKeyboard.js</title>
+    <title>JSDoc: Source: printMirroredBraille.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: brailleKeyboard.js</h1>
+    <h1 class="page-title">Source: printMirroredBraille.js</h1>
 
     
 
@@ -27,39 +27,21 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Importa el mapa de caracteres Braille del módulo 'translateToBraille.js'.
- * @module translateToBraille
+ * Escuchador de eventos para imprimir el Braille En espejo
  */
-import { brailleMap } from './translateToBraille.js';
+document.getElementById('saveTXTButton').addEventListener('click', function() {
+    printMirroredBraille(document.getElementById('brailleOutput').textContent);
+});
 
 /**
- * Referencia al elemento del DOM que representa el teclado Braille.
- * @type {HTMLElement}
+ * Función para imprirmir el texto Braille en espejo
+ * Guarda el texto en almacenamiento del navegador y se lo pasa a otro documento print.html
+ * @param {String} textToPrint - El texto que se quiere imprimir
  */
-const brailleKeyboard = document.getElementById('brailleKeyboard');
-
-/**
- * Crea las teclas del teclado virtual Braille y las añade al DOM.
- * Cada tecla es un div con una representación visual del carácter Braille y el carácter correspondiente.
- * También se añade un manejador de eventos de clic a cada tecla.
- */
-for (let [char, braille] of Object.entries(brailleMap)) {
-    const key = document.createElement('div');
-    key.className = 'braille-key';
-    key.innerHTML = `&lt;span>${char ==' ' ? 'Espacio':char}&lt;/span>&lt;div class="braille-symbol">${braille}&lt;/div>`;
-    key.dataset.char = char;
-    brailleKeyboard.appendChild(key);
-    key.addEventListener('click', addBrailleCharacter);
-}
-
-/**
- * Añade el carácter Braille correspondiente al elemento de entrada de texto Braille cuando se hace clic en una tecla.
- * @param {Event} event - El evento de clic.
- */
-function addBrailleCharacter(event) {
-    const brailleChar = event.currentTarget.querySelector('.braille-symbol').innerText;
-    const brailleTextInput = document.getElementById('brailleTextInput');
-    brailleTextInput.value += brailleChar;
+function printMirroredBraille(textToPrint) {
+    localStorage.setItem('translatedText', textToPrint); // Almacenar en localStorage
+    window.location.href = './print.html'; // Cambiar a la página de destino
+    
 }
 </code></pre>
         </article>

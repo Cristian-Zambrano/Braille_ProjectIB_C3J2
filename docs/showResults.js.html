@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: brailleKeyboard.js</title>
+    <title>JSDoc: Source: showResults.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: brailleKeyboard.js</h1>
+    <h1 class="page-title">Source: showResults.js</h1>
 
     
 
@@ -26,42 +26,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Importa el mapa de caracteres Braille del módulo 'translateToBraille.js'.
- * @module translateToBraille
+            <pre class="prettyprint source linenums"><code>import { translateToBraille } from './translateToBraille.js';
+import { translateToText } from './translateToText.js';
+/**
+ * Envía el resultado de la traducción al Braille al elemento con id 'brailleOutput'.
+ * Se necesita para enviar el texto por parámetro
+ * @param {string} text - El texto a traducir.
  */
-import { brailleMap } from './translateToBraille.js';
+export function sendResultBraille(text){
+    document.getElementById('brailleOutput').innerText = translateToBraille(text);
+}
+
 
 /**
- * Referencia al elemento del DOM que representa el teclado Braille.
- * @type {HTMLElement}
+ * Esta función obtiene el evento que está al inicio de este script. Posteriormente, lo envía al metodo para traducir
+ * de braille a español.
+ * @param {String} textInBraille texto recibido del evento
  */
-const brailleKeyboard = document.getElementById('brailleKeyboard');
-
-/**
- * Crea las teclas del teclado virtual Braille y las añade al DOM.
- * Cada tecla es un div con una representación visual del carácter Braille y el carácter correspondiente.
- * También se añade un manejador de eventos de clic a cada tecla.
- */
-for (let [char, braille] of Object.entries(brailleMap)) {
-    const key = document.createElement('div');
-    key.className = 'braille-key';
-    key.innerHTML = `&lt;span>${char ==' ' ? 'Espacio':char}&lt;/span>&lt;div class="braille-symbol">${braille}&lt;/div>`;
-    key.dataset.char = char;
-    brailleKeyboard.appendChild(key);
-    key.addEventListener('click', addBrailleCharacter);
+export function sendResultText(textInBraille) {
+    document.getElementById('textOutput').innerText = translateToText(textInBraille);
 }
 
 /**
- * Añade el carácter Braille correspondiente al elemento de entrada de texto Braille cuando se hace clic en una tecla.
- * @param {Event} event - El evento de clic.
+ * Ajusta automáticamente el tamaño del elemento de entrada de texto a medida que se introduce texto.
  */
-function addBrailleCharacter(event) {
-    const brailleChar = event.currentTarget.querySelector('.braille-symbol').innerText;
-    const brailleTextInput = document.getElementById('brailleTextInput');
-    brailleTextInput.value += brailleChar;
-}
-</code></pre>
+export function autoResize() {
+    
+}</code></pre>
         </article>
     </section>
 

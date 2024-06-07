@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: brailleKeyboard.js</title>
+    <title>JSDoc: Source: getTextFromIndex.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: brailleKeyboard.js</h1>
+    <h1 class="page-title">Source: getTextFromIndex.js</h1>
 
     
 
@@ -27,40 +27,41 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Importa el mapa de caracteres Braille del módulo 'translateToBraille.js'.
- * @module translateToBraille
+ * Importa el método para enviar el resultado de braile de showResults.js
+ * @module showResults
  */
-import { brailleMap } from './translateToBraille.js';
+import { sendResultBraille } from './showResults.js';
+/**
+ * Importa el método autoResize de showResults.js
+ * @module showResults
+ */
+import { autoResize } from './showResults.js';
+/**
+ * Importa el método de sendResultText de showResults.js
+ * @module showResults
+ */
+import { sendResultText } from './showResults.js';
+/**
+ * Añade un manejador de eventos al botón 'translateToBrailleButton'.
+ * Cuando se hace clic en el botón, se ejecuta la función 'sendResultBraille' con el valor del elemento con id 'textInput' como argumento.
+ */
+document.getElementById('textInput').addEventListener('input', function() {
+    sendResultBraille(document.getElementById('textInput').value);
+});
 
 /**
- * Referencia al elemento del DOM que representa el teclado Braille.
- * @type {HTMLElement}
+ * En este apartado se obtiene el texto en braille que se desea traducir.
  */
-const brailleKeyboard = document.getElementById('brailleKeyboard');
+document.getElementById('brailleKeyboard').addEventListener('click',function(){
+    sendResultText(document.getElementById('brailleTextInput').value);
+});
+
 
 /**
- * Crea las teclas del teclado virtual Braille y las añade al DOM.
- * Cada tecla es un div con una representación visual del carácter Braille y el carácter correspondiente.
- * También se añade un manejador de eventos de clic a cada tecla.
+ * Añade un manejador de eventos al elemento de entrada de texto con id 'textInput'.
+ * Cuando se introduce texto en el elemento, se ejecuta la función 'autoResize'.
  */
-for (let [char, braille] of Object.entries(brailleMap)) {
-    const key = document.createElement('div');
-    key.className = 'braille-key';
-    key.innerHTML = `&lt;span>${char ==' ' ? 'Espacio':char}&lt;/span>&lt;div class="braille-symbol">${braille}&lt;/div>`;
-    key.dataset.char = char;
-    brailleKeyboard.appendChild(key);
-    key.addEventListener('click', addBrailleCharacter);
-}
-
-/**
- * Añade el carácter Braille correspondiente al elemento de entrada de texto Braille cuando se hace clic en una tecla.
- * @param {Event} event - El evento de clic.
- */
-function addBrailleCharacter(event) {
-    const brailleChar = event.currentTarget.querySelector('.braille-symbol').innerText;
-    const brailleTextInput = document.getElementById('brailleTextInput');
-    brailleTextInput.value += brailleChar;
-}
+document.getElementById('textInput').addEventListener('input', autoResize);
 </code></pre>
         </article>
     </section>

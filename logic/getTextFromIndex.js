@@ -1,5 +1,17 @@
+/**
+ * Importa el método para enviar el resultado de braile de showResults.js
+ * @module showResults
+ */
 import { sendResultBraille } from './showResults.js';
+/**
+ * Importa el método autoResize de showResults.js
+ * @module showResults
+ */
 import { autoResize } from './showResults.js';
+/**
+ * Importa el método de sendResultText de showResults.js
+ * @module showResults
+ */
 import { sendResultText } from './showResults.js';
 /**
  * Añade un manejador de eventos al botón 'translateToBrailleButton'.
