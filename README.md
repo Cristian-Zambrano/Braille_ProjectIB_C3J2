@@ -1,7 +1,8 @@
-# Project1BISWD622_24A
+# Proyecto Calidad y Construcción de Software
 
-# Description:
-This software product offers a comprehensive catalog of video games, allowing customers to browse and select their favorite ones. It features a shopping cart for easy management of selected games and ensures secure payment processing for a safe and convenient purchasing experience.
+# Descripción:
+Este producto de software permite la traducción de español a Braille, y de Braille a Español, con el uso de un teclado virtual.
+
 
 # Elaborated by:
 - Jorman Chuquer            (@JorMath)
@@ -10,77 +11,38 @@ This software product offers a comprehensive catalog of video games, allowing cu
 - Cristian Zambrano   (@Cristian-Zambrano)
 - Cristian Sangucho (@cristian-sangucho-a)
 
-# Dependencies:
+# Dependencias:
 
 ``
-JDK 21.0.1
-``
-
-``
-mockito 2.23.4
+Node JS
 ``
 
 ``
-tomcat:10-jdk17-temurin-jammy
+Navegador Web Cualquiera Actual
 ``
 
 ``
-maven 3.8.5 
+Jest 29.7.0
 ``
 
 ``
-JUnit 4.13.2
+JSDocs 4.0.3
 ``
 
-``
-MariaDB 10.4
-``
-
-## TO RUN:
-First, create a docker-compose.yml file:
+## Para verlo y probarlo:
+Descarga un servidor web como Apache:
 ````
-services:
-  webapp:
-    container_name: webapp
-    image: cristhtsirc/gr01_1bproject1_622_24a-webapp
-    ports:
-      - 8080:8080
-  database:
-    container_name: database
-    image: cristhtsirc/gr01_1bproject1_622_24a-database
-    ports:
-      - 3306:3306
+Arrastra el proyecto a los documentos de Apache
+Inicia el servidor
+En el navegador, ingresa la url localhost:[puerto]
 ````
 
-Then, in the same directory:
+Otra alternativa:
 
 ``
-docker compose up
+Visita el siguiente sitio web: https://jrmth24.github.io/
 ``
 
-Finally, go to browser and search:
-
-``
-localhost:8080/tienda/
-``
-
-## Package:
-If you make a change:
-
-1.- execute iniciar-docker.bat
-
-- to execute clean, test, package, and docker compose up
-- visit localhost:8080/tienda/
-
-2.- upload the containers to dockerhub.
-
-  
-## To upload the containers to DockerHub:
-````
-docker-compose build
-
-docker tag gr01_1bproject1_622_24a-webapp:latest cristhtsirc/gr01_1bproject1_622_24a-webapp:latest
-docker tag gr01_1bproject1_622_24a-database:latest cristhtsirc/gr01_1bproject1_622_24a-database:latest
 
 docker push cristhtsirc/gr01_1bproject1_622_24a-webapp:latest
 docker push cristhtsirc/gr01_1bproject1_622_24a-database:latest   
