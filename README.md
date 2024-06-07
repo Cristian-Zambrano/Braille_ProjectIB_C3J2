@@ -44,8 +44,4 @@ Visita el siguiente sitio web: https://jrmth24.github.io/
 ``
 
 
-docker push cristhtsirc/gr01_1bproject1_622_24a-webapp:latest
-docker push cristhtsirc/gr01_1bproject1_622_24a-database:latest   
-````
-
 Naming variables: camelCase
