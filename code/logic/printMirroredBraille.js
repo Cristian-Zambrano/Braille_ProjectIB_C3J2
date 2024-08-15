@@ -12,6 +12,6 @@ document.getElementById('saveTXTButton').addEventListener('click', function() {
  */
 function printMirroredBraille(textToPrint) {
     localStorage.setItem('translatedText', textToPrint); // Almacenar en localStorage
-    window.location.href = './print.html'; // Cambiar a la página de destino
+    window.location.href = './printMirror.html'; // Cambiar a la página de destino
     
 }
