@@ -38,7 +38,7 @@ export function translateToBraille() {
     for (let i = 0; i < inputText.length; i++) {
         const char = inputText[i];
         if (brailleMap[char]) {
-            outputBraille += brailleMap[char] + "a \n a";
+            outputBraille += brailleMap[char];
         } else {
             alert(`El carácter " ${char} " no tiene una representación en braille.`);
             // Borra el carácter no reconocido del textarea
