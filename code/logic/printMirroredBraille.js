@@ -2,7 +2,7 @@
  * Escuchador de eventos para imprimir el Braille En espejo
  */
 document.getElementById('saveTXTButton').addEventListener('click', function() {
-    printMirroredBraille(document.getElementById('brailleOutput').textContent);
+    printMirroredBraille(document.getElementById('brailleOutput').value);
 });
 
 /**

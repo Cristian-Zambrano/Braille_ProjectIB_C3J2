@@ -19,15 +19,13 @@
     <div class="section">
         <!--Seccion de español a braille-->
         <h2>Español a Braille</h2>
-        <textarea id="textInput" placeholder="Introduce el texto en español aquí..."></textarea> <!--Introducción del texto en español-->
+        <textarea id="textInput" placeholder="Introduce el texto en español aquí..." wrap="off"></textarea> <!--Introducción del texto en español-->
         <textarea id="brailleOutput" class="output" disabled="true"  wrap="off"></textarea> <!--Salida en Braille-->
         <button id="clearBrailleButton">Limpiar contenido</button> <!--Botón para limpiar el texto-->
         <button id="saveTXTButton" >Imprimir en PDF (Espejo)</button> <!--Botón para imprimir en PDF-->
         <button id="saveTXTButtonNormal" >Imprimir en PDF (Normal)</button> <!--Botón para imprimir en PDF-->
 
-
         
-
     </div>
     <div class="section">
         <h2>Braille a Texto</h2> <!--Sección de braille a español-->
@@ -37,14 +35,17 @@
         <textarea id="textOutput" class="output" disabled="true"></textarea> <!--Salida en texto -->
         <button id="clearTextButton">Limpiar Texto</button> <!--Botón para limpiar-->
     </div>
+
+
+
 </div>
 <!--Llamada de los scripts-->
 <script type="module" src="../logic/getTextFromIndex.js"></script>
 <script type="module" src="../logic/showResults.js"></script>
 <script type="module" src="../logic/brailleKeyboard.js"></script>
-<script src="/logic/cleanText.js"></script>
+<script src="../logic/cleanText.js"></script>
 
-<script src="/logic/printBraille.js"></script>
-<script src="/logic/printMirroredBraille.js"></script>
+<script src="../logic/printBraille.js"></script>
+<script src="../logic/printMirroredBraille.js"></script>
 </body>
 </html>

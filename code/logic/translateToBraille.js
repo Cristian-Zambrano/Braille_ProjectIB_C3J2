@@ -33,6 +33,7 @@ export const brailleMap = {
 export function translateToBraille() {
     let outputBraille = '';
     const textInput = document.getElementById('textInput');
+    const brailleOutput = document.getElementById('brailleOutput');
     let inputText = textInput.value;
 
     for (let i = 0; i < inputText.length; i++) {
@@ -45,10 +46,12 @@ export function translateToBraille() {
             inputText = inputText.slice(0, i) + inputText.slice(i + 1);
             textInput.value = inputText; // Actualiza el contenido del textarea
             i--; // Ajusta el índice para revisar el texto correctamente después de eliminar el carácter
+
         }
+        brailleOutput.value = outputBraille;
     }
 
-    return outputBraille;
+    return brailleOutput.value;
 }
 
 
